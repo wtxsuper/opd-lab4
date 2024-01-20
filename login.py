@@ -1,8 +1,10 @@
-def check_credentials(username: str, password: str) -> bool:
+def check_credentials(username: str, password: str, filepath: str) -> bool:
     try:
-        with open("credentials.txt", "r") as F:
+        # Открываем файл для чтения и считываем имя пользователя и пароль
+        with open(filepath, "r") as F:
             cr_username = F.readline().strip()
             cr_password = F.readline().strip()
+        # Если полученные данные и данные из файла совпадают, возвращаем истину
         if username == cr_username and password == cr_password:
             return True
         else:
